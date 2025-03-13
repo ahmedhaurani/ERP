@@ -1,0 +1,139 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ERP API",
+        "description": "توثيق أقسام النظام",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/departments": {
+            "get": {
+                "tags": [
+                    "Departments"
+                ],
+                "summary": "جلب الأقسام",
+                "operationId": "f8b666ac5c58cb3221054e5e6b9d482f",
+                "responses": {
+                    "200": {
+                        "description": "قائمة الأقسام"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Departments"
+                ],
+                "summary": "إضافة قسم جديد (فقط للإدمن)",
+                "operationId": "13f89cd363991cfb6df0e97e4602bdc6",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "قسم الاتصالات"
+                                    },
+                                    "parent_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "تم إنشاء القسم"
+                    },
+                    "403": {
+                        "description": "صلاحيات غير كافية"
+                    }
+                }
+            }
+        },
+        "/api/departments/{id}": {
+            "put": {
+                "tags": [
+                    "Departments"
+                ],
+                "summary": "تحديث قسم (فقط للإدمن)",
+                "operationId": "976821e0446cc8ad0810ba9b11d25397",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "قسم الشبكات"
+                                    },
+                                    "parent_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "تم التحديث بنجاح"
+                    },
+                    "403": {
+                        "description": "صلاحيات غير كافية"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Departments"
+                ],
+                "summary": "حذف قسم (فقط للإدمن)",
+                "operationId": "6fa0cf0d07c88c0f186601286556e6c9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "تم حذف القسم"
+                    },
+                    "403": {
+                        "description": "صلاحيات غير كافية"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Departments",
+            "description": "Endpoints لإدارة الأقسام"
+        }
+    ]
+}
