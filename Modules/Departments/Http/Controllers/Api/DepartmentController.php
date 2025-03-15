@@ -7,17 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\Department;
 
 /**
- * @OA\Info(
- *     title="ERP API",
- *     version="1.0.0",
- *     description="توثيق أقسام النظام"
- * )
- *
  * @OA\Tag(
  *     name="Departments",
  *     description="Endpoints لإدارة الأقسام"
  * )
  */
+
 class DepartmentController extends Controller
 {
     /**
